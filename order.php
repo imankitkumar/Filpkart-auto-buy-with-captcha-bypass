@@ -62,10 +62,10 @@ $post_field = '{
 }'; 
 
 
-/***
-      extracting all @required values 
-                     for processing 
-                               transaction.  
+/*** extracting all 
+            @required values 
+                  for processing 
+                            transaction.  
                                              ***/
 
 $decode_param = json_decode(curlPost($api5, $post_field, $headers), true);
