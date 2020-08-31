@@ -1,12 +1,18 @@
 <?php
 
-include('browser/curl_client.php');
-include('services/api_handler.php');
+include('curl_client.php');
+include('api_handler.php');
 include('config.php');
 
 $post_data = '{"checkoutType":"PHYSICAL","cartRequest":{"pageType":"ProductPage","cartContext":{"'.$cart_context.'":{"productId":"'.$set_product_id.'","quantity":'.$quantity.',"cashifyDiscountApplied":false,"vulcanDiscountApplied":false}}}}';
 
-//adding selected product to your cart
+/***
+ adding selected
+
+    product
+  
+    to your cart
+                   ***/
 
 $res = json_decode(curlPost($api1, $post_data, $headers), true);
 
@@ -18,7 +24,10 @@ $parse = $res['RESPONSE']['getPaymentToken']['token'];
 $captcha_res = json_decode(curlGet(''.$api3.''.$parse.'', $headers), true);
 
 
-//bypassing captcha verification
+/***
+    bypassing
+       captcha verification
+                             ***/
 
 $captcha_id = $captcha_res['captcha_image']['id'];
 $captcha_image = $captcha_res['captcha_image']['image'];
@@ -28,7 +37,10 @@ $bypass_captcha = json_decode(curlPost($api4, '{
   "apikey": "wMjXmBIcHcdYqO2RrsVN",
   "data": "'.$captcha_image.'" }',''), true); //@captcha bypassed
   
-//verifying captcha text 
+/*** verifying 
+         captcha
+               text 
+                     ***/
 
 $post_field = '{
   "token": "'.$parse.'",
@@ -50,7 +62,11 @@ $post_field = '{
 }'; 
 
 
-//extracting all @required values for processing transaction.
+/***
+      extracting all @required values 
+                     for processing 
+                               transaction.  
+                                             ***/
 
 $decode_param = json_decode(curlPost($api5, $post_field, $headers), true);
 
@@ -66,7 +82,11 @@ $merchant_ref = $decode_param['primary_action']['parameters']['merchant_referenc
 $merchant_txn_id = $decode_param['primary_action']['parameters']['merchant_transaction_id'];
 
 
-//process to extract primary transaction id 
+/***
+    process to extract
+         primary 
+      transaction id 
+                      ***/
 
 $primary = $decode_param['primary_action']['parameters']['primary_record'];
 
@@ -79,7 +99,9 @@ $prr = strtok($pr_id,'"'); //@final primary txn id
 $payment_hash = $decode_param['primary_action']['parameters']['hash'];
 
 
-//making final POST request.
+/***  making 
+            final POST request.
+                                 ***/
 
 $final_data = 'cod_selected_in_part_payment=false
 &
@@ -148,12 +170,16 @@ is_risky_instrument=false
 hash='.$payment_hash.'';
 
 
-//remove all whitespaces
+/*** removing 
+     all whitespaces
+                     ***/
 
 $removews = preg_replace('/\s+/', '', $final_data);
 
 
-//final response
+/*** Final 
+         response
+                   ***/
 
 $status = json_decode(curlPost($api6, $removews, $headers2), true);
 
@@ -175,4 +201,5 @@ echo '<head>
 </head>';
 
 }
+
 ?>
