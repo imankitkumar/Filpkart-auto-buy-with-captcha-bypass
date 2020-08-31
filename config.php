@@ -2,7 +2,11 @@
 
 //set all @required values
 
-$set_product_link = "Place_product_url_here";
+/***Product link example:
+
+https://www.flipkart.com/poco-m2-pro-green-greener-64-gb/p/itm5de3b6eb57ab4?pid=MOBFT7MKFHTAPDYD&lid=LSTMOBFT7MKFHTAPDYDLRJC1B&param=7767&nnc=VF54TJL6YWGI_AD&pageUID=1598891274737***/
+
+$set_product_link = "Place_valid_product_url_here";
 
 $set_cookie = "Place_your_account_cookie_here";
 
