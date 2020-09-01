@@ -5,11 +5,13 @@
 Filpkart-auto-buy-with-captcha-bypassed
                                 ***/
 
-include('curl_client.php');
-include('api_handler.php');
+include('browser/curl_client.php');
+include('services/api_handler.php');
 include('config.php');
 
+
 $post_data = '{"checkoutType":"PHYSICAL","cartRequest":{"pageType":"ProductPage","cartContext":{"'.$cart_context.'":{"productId":"'.$set_product_id.'","quantity":'.$quantity.',"cashifyDiscountApplied":false,"vulcanDiscountApplied":false}}}}';
+
 
 /***
  adding selected
@@ -21,9 +23,11 @@ $post_data = '{"checkoutType":"PHYSICAL","cartRequest":{"pageType":"ProductPage"
 
 $res = json_decode(curlPost($api1, $post_data, $headers), true);
 
+
 if($res['STATUS_CODE'] === 200) {
 
 $res = json_decode(curlGet($api2, $headers), true);
+
 $parse = $res['RESPONSE']['getPaymentToken']['token'];
 
 $captcha_res = json_decode(curlGet(''.$api3.''.$parse.'', $headers), true);
@@ -35,6 +39,7 @@ $captcha_res = json_decode(curlGet(''.$api3.''.$parse.'', $headers), true);
                              ***/
 
 $captcha_id = $captcha_res['captcha_image']['id'];
+
 $captcha_image = $captcha_res['captcha_image']['image'];
 
 $bypass_captcha = json_decode(curlPost($api4, '{
@@ -42,6 +47,7 @@ $bypass_captcha = json_decode(curlPost($api4, '{
   "apikey": "wMjXmBIcHcdYqO2RrsVN",
   "data": "'.$captcha_image.'" }',''), true); //@captcha bypassed
   
+
 /*** verifying 
          captcha
                text 
@@ -76,12 +82,15 @@ $post_field = '{
 $decode_param = json_decode(curlPost($api5, $post_field, $headers), true);
 
 $tid = $decode_param['primary_action']['parameters']['pg_trackid'];
+
 $tamt = $decode_param['primary_action']['parameters']['transaction_amount'];
 
 $zippyid = $decode_param['primary_action']['parameters']['payzippy_transaction_id'];
+
 $merchant_id = $decode_param['primary_action']['parameters']['merchant_user_id'];
 
 $txn_time = $decode_param['primary_action']['parameters']['transaction_time'];
+
 $merchant_ref = $decode_param['primary_action']['parameters']['merchant_reference_id'];
 
 $merchant_txn_id = $decode_param['primary_action']['parameters']['merchant_transaction_id'];
@@ -189,11 +198,13 @@ $removews = preg_replace('/\s+/', '', $final_data);
 $status = json_decode(curlPost($api6, $removews, $headers2), true);
 
 $confirm_order = $status['RESPONSE']['checkoutComplete'];
+
 $order_email = $status['SESSION']['email'];
 
 echo 'was Order Success ? <h2 style="color:green">'.$confirm_order.'</h2><br>
       Order Email: <h2 style="color:green">'.$order_email.'</h2><br>
       Quantity: <h2 style="color:green">'.$quantity.'</h2>';
+      
 }
 
 else {
@@ -201,9 +212,8 @@ else {
 //error
 
 echo "Invalid cart context / Invalid Cookie / Product Out Of Stock";
-echo '<head>
-  <meta http-equiv="refresh" content="0">
-</head>';
+
+header('refresh: 0');
 
 }
 
