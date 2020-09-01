@@ -2,7 +2,7 @@
 
   # Set-Up Instructions
 
-  * extract your account cookies with the help of google chrome network tab or any other tool which you prefer.
+  * Extract your account cookies with the help of google chrome network tab or any other tool which you prefer.
 
   * set up the config.php
 
@@ -12,6 +12,6 @@
 
   # Features
   
-  * Much faster & reliable than extentions.
+  * Much more faster & reliable than extentions.
   * Bypass captcha automatically within 1-2 seconds.
   * Auto refresh the page to increase the possibility of placing order.
