@@ -1,4 +1,4 @@
-# Filpkart-auto-buy-with-captcha-bypassed
+# Filpkart-auto-buy-with-captcha-bypass
 
   * extract your account cookies with the help of google chrome network tab or any other tool which you prefer.
 
