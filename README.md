@@ -10,7 +10,8 @@
 
   * now run order.php 
 
-  #Features
+  # Features
   
+  * Much faster & reliable than extentions.
   * Bypass captcha automatically within 1-2 seconds.
   * Auto refresh the page to increase the possibility of placing order.
