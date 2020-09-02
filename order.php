@@ -5,8 +5,8 @@
 Filpkart-auto-buy-with-captcha-bypassed
                                 ***/
 
-include('browser/curl_client.php');
-include('services/api_handler.php');
+include('curl_client.php');
+include('api_handler.php');
 include('config.php');
 
 
