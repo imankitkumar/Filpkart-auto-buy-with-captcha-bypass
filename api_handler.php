@@ -12,7 +12,7 @@ $api2 = "https://1.rome.api.flipkart.com/3/checkout/paymentToken?v=$timestamp";
 $api3 = "https://2.payments.flipkart.com/fkpay/api/v3/payments/captcha/";
 
 //POST
-$api4 = "https://api.apitruecaptcha.org/one/gettext";
+$api4 = "https://fkcaptcha.herokuapp.com/captcha.php";
 
 //POST
 $api5 = "https://2.payments.flipkart.com/fkpay/api/v3/payments/pay?instrument=COD";
