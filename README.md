@@ -9,7 +9,7 @@
 
   # Usage
 
-  * now run order.php 
+  * now run order.php prior to the flash sale.
 
   # Features
   
