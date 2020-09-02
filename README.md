@@ -2,7 +2,8 @@
 
   # Set-Up Instructions
 
-  * Extract your account cookies with the help of google chrome network tab or any other tool which you prefer.
+  * Extract your account cookies 
+     use google chrome network tab or any other tool which you prefer.
 
   * set up the config.php
 
