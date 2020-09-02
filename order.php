@@ -42,11 +42,10 @@ $captcha_id = $captcha_res['captcha_image']['id'];
 
 $captcha_image = $captcha_res['captcha_image']['image'];
 
-$bypass_captcha = json_decode(curlPost($api4, '{
-  "userid": "arun56",
-  "apikey": "wMjXmBIcHcdYqO2RrsVN",
-  "data": "'.$captcha_image.'" }',''), true); //@captcha bypassed
-  
+$img = urlencode($captcha_image);
+
+$bypass_captcha = json_decode(curlPost($api4, 'image='.$img.'', $headers2), true);
+
 
 /*** verifying 
          captcha
