@@ -5,6 +5,8 @@
   * Extract your account cookies ,
      use google chrome network tab or any other tool which you prefer.
 
+  * Save default address for your ac.
+
   * set up the config.php
 
   # Usage
