@@ -4,6 +4,7 @@
 
   * Extract your account cookies ,
      use google chrome network tab or any other tool which you prefer.
+     or use the generate_cookie.py file 
 
   * Save default address in your ac.
 
