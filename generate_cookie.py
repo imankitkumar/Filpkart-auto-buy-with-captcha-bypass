@@ -32,7 +32,7 @@ data2 = '{"actionRequestContext":{"type":"LOGIN","loginIdPrefix":"+91","loginId"
 
 response2 = requests.post('https://1.rome.api.flipkart.com/1/action/view', headers=headers, data=data2)
 
-print('YOUR COOKIE')
+print('YOUR COOKIE IS:')
 
 
 print(response2.headers['Set-Cookie'])
