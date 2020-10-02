@@ -1,4 +1,4 @@
-# Filpkart-auto-buy-with-captcha-bypass ⚡
+# STOPPED WORKING :( ! PLS DONT TRY & WASTE YOUR TIME ⚡
 
   # Set-Up Instructions 🙂
 
